@@ -43,7 +43,7 @@ func (l *DupeList) Iterator() Iterator {
 // Search by key to find the matching node in the list
 // For duplicate keys this will always return the last
 // inserted node for the key
-func (l *DupeList) Search(key int) *Node {
+func (l *DupeList) Search(key int64) *Node {
 	l.RLock()
 	defer l.RUnlock()
 	x := l.header
@@ -61,7 +61,7 @@ func (l *DupeList) Search(key int) *Node {
 
 // SearchKeyVal allows you to search for nodes by the key and
 // value of the node which is useful for nodes with duplicate keys
-func (l *DupeList) SearchKeyVal(key int, val []byte) *Node {
+func (l *DupeList) SearchKeyVal(key int64, val []byte) *Node {
 	l.RLock()
 	defer l.RUnlock()
 	x := l.header
@@ -87,7 +87,7 @@ func (l *DupeList) SearchKeyVal(key int, val []byte) *Node {
 }
 
 // Insert a node into the list given a key and a byte array value
-func (l *DupeList) Insert(key int, val []byte) *Node {
+func (l *DupeList) Insert(key int64, val []byte) *Node {
 	update := make([]*Node, l.MaxLevel)
 	x := l.header
 	l.Lock()
@@ -127,7 +127,7 @@ func (l *DupeList) Insert(key int, val []byte) *Node {
 }
 
 // Delete a node by the key provided
-func (l *DupeList) Delete(key int) bool {
+func (l *DupeList) Delete(key int64) bool {
 	update := make([]*Node, l.MaxLevel)
 	x := l.header
 	l.Lock()

@@ -3,7 +3,7 @@ package skiplist
 // Split takes a key to split a list by
 // All values less than the provided key
 // will be in the new list which will be returned
-func (l *List) Split(splitKey int) *List {
+func (l *List) Split(splitKey int64) *List {
 	level := ListMaxLevel
 	if l.level > level {
 		level = l.level

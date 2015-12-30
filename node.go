@@ -6,14 +6,14 @@ package skiplist
 type Node struct {
 	forward  []*Node
 	backward *Node
-	key      int
+	key      int64
 	val      []byte
 }
 
 // NewNode takes a level used for the forward slice
 // referencing linked nodes as well as the key and
 // value of the node
-func NewNode(level, key int, val []byte) *Node {
+func NewNode(level int, key int64, val []byte) *Node {
 	return &Node{
 		forward: make([]*Node, level),
 		key:     key,
