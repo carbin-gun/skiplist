@@ -1,3 +1,6 @@
 coverage.html
 coverage.out
 tmp/
+*~
+.DS_Store
+.idea/
