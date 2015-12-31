@@ -15,9 +15,9 @@ const (
 // SkipList interface defining the methods
 // needed for a skip list
 type SkipList interface {
-	Search(key int64) *Node
-	Delete(key int64) bool
-	Insert(key int64, val []byte) *Node
+	Search(key float64) *Node
+	Delete(key float64) bool
+	Insert(key float64, val []byte) *Node
 	Iterator() Iterator
 }
 
@@ -74,7 +74,7 @@ func (l *List) Size() int {
 
 // Search for a node in the skip list by the key
 // will return a Node if found or nil if not found
-func (l *List) Search(key int64) *Node {
+func (l *List) Search(key float64) *Node {
 	l.RLock()
 	defer l.RUnlock()
 	x := l.header
@@ -93,7 +93,7 @@ func (l *List) Search(key int64) *Node {
 // Insert a new node into the skip list providing a
 // integer key and a byte array value. Will return
 // the inserted Node
-func (l *List) Insert(key int64, val []byte) *Node {
+func (l *List) Insert(key float64, val []byte) *Node {
 	update := make([]*Node, l.MaxLevel)
 	x := l.header
 	var alreadyChecked *Node
@@ -142,7 +142,7 @@ func (l *List) Insert(key int64, val []byte) *Node {
 
 // Delete will delete a node for the provided key
 // will return a true/false if Node was deleted or not
-func (l *List) Delete(key int64) bool {
+func (l *List) Delete(key float64) bool {
 	update := make([]*Node, l.MaxLevel)
 	x := l.header
 	var alreadyChecked *Node

@@ -7,12 +7,12 @@ type Iterator interface {
 	Next() (ok bool)
 	Prev() (ok bool)
 	Val() []byte
-	Key() int64
+	Key() float64
 }
 
 type iterable struct {
 	curr *Node
-	key  int64
+	key  float64
 	val  []byte
 }
 
@@ -41,7 +41,7 @@ func (i *iterable) Val() []byte {
 	return i.curr.val
 }
 
-func (i *iterable) Key() int64 {
+func (i *iterable) Key() float64 {
 	if i.curr == nil {
 		return 0
 	}
